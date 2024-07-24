@@ -42,7 +42,7 @@ public class AbstractionExampleGeekGoogle {
 	        this.request = request; 
 	  
 	        System.out.println( 
-	            "Geek Requested: "
+	            "Geek Requested from github: "
 	            + request); 
 	    } 
 	  
@@ -62,7 +62,7 @@ public class AbstractionExampleGeekGoogle {
 	    { 
 	        this.request = request; 
 	        System.out.println( 
-	            "Google Searched: "
+	            "Google Searched from github DSRepo: "
 	            + request); 
 	    } 
 	  
