@@ -61,7 +61,7 @@ public class StreamDemoNoteUtilExercise {
 		System.out.println("");
 		
 		List<Fuss> list = noteList.stream().flatMap(i-> i.getListOfFuss().stream()).collect(Collectors.toList());
-		System.out.println("List of list fuss :: "+list);
+		System.out.println("List of list fuss - github test 1:: "+list);
 		
 		//Sort based on name if name is null then sort it based on model
 		noteList.stream().sorted((t1,t2)->{
