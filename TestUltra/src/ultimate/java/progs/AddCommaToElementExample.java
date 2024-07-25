@@ -11,7 +11,6 @@ public class AddCommaToElementExample {
 		List<String> strList = numList.stream().map(i->String.valueOf(i)).collect(Collectors.toList());
 		String result = String.join(", ",numList.stream().parallel().map(i->String.valueOf(i)).collect(Collectors.toList()));
 		System.out.println("Add comma :: "+result);
-
 	}
 
 }
