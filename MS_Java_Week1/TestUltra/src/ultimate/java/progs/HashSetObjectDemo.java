@@ -1,0 +1,66 @@
+package ultimate.java.progs;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class HashSetObjectDemo {
+
+	public static void main(String[] args) {
+		
+		HashSet<Object> hs = new HashSet<Object>();
+		WorldString ws1 = new WorldString("abc");
+		WorldString ws2 = new WorldString("abc");
+		hs.add(ws1);
+		hs.add(ws2);
+		
+		hs.add("abc");
+		hs.add("abc");
+		
+		System.out.println(hs);
+		
+		
+		Set<Integer> hs1 = new HashSet<Integer>();
+		hs1.add(6);hs1.add(8);hs1.add(78);hs1.add(43);hs1.add(5);hs1.add(2);
+		hs1.forEach(i->System.out.println(i));
+		
+		System.out.println("------------------------------");
+		List<Integer> ls = new ArrayList<Integer>();
+		ls.add(6);ls.add(8);ls.add(78);ls.add(43);ls.add(5);ls.add(2);
+		ls.forEach(i->System.out.println(i));
+		
+	}
+
+}
+
+class WorldString {
+	
+	String name;
+	
+	public WorldString(String name) {
+		this.name = name;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(this.getClass()!=obj.getClass()) {
+			return false;
+		} 
+		WorldString ws = (WorldString)obj;
+		if(ws.name != this.name) {
+			return false;
+		}
+		return true;
+	}
+	
+	@Override
+	public int hashCode() {
+		int prime = 31;
+		int res = prime * name.hashCode();
+		return res;
+	}
+}

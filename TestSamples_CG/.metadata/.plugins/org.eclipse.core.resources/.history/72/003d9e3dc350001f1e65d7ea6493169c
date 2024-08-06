@@ -1,0 +1,41 @@
+package com.cg.scb.book.ctrl;
+
+import  org.assertj.core.api.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.ArgumentMatchers;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.cg.scb.book.Book;
+import com.cg.scb.book.BookController;
+import com.cg.scb.book.BookRepository;
+import com.cg.scb.book.BookService;
+
+@RunWith(SpringRunner.class)
+@WebMvcTest(BookController.class)
+public class CreateBookServiceTest {
+
+	@Mock
+	private BookRepository repository;
+	
+	@InjectMocks
+	private BookService service;
+	
+	@Test
+	public void whenSaveBook_shouldReturnBook() {
+		Book book = new Book(333,"BB",5000.99);
+		
+		when(repository.save(ArgumentMatchers.any(Book.class))).thenReturn(book);
+		
+		Book bookCreated = service.createBook(book);
+		
+		verify(repository).save(book);
+		
+	}
+}

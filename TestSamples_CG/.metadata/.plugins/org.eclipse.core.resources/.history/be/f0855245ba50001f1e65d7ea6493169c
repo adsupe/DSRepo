@@ -1,0 +1,8 @@
+package com.cg.security.DefaultSecurity;
+
+import org.junit.runner.RunWith;
+
+@RunWith
+public class CreateBookServiceTest {
+
+}

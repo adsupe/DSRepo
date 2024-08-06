@@ -1,0 +1,28 @@
+package com.cg.scb.book;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+
+class DefaultSecurityApplicationTests {
+
+	@Mock
+	private BookRepository repository;
+	
+	@InjectMocks
+	private BookService service;
+	
+	@Test
+	public void whenSaveBook_shouldReturnBook() {
+		Book book = new Book(333,"BB",5000.99);
+		
+//		when(repository.save(ArgumentMatchers.any(Book.class))).thenReturn(book);
+//		
+//		Book bookCreated = service.createBook(book);
+//		
+//		assertThat(bookCreated.getName()).isSameAs(book.getName());
+//		verify(repository).save(book);
+		
+	}
+
+}

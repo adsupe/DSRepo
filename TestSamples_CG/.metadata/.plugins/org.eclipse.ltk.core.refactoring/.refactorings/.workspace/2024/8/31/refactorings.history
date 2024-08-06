@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;DefaultSecurity&apos; to &apos;BookScbDemo&apos;" description="Rename resource &apos;DefaultSecurity&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/DefaultSecurity" name="BookScbDemo" stamp="1722584130765" updateReferences="true"/>
+</session>

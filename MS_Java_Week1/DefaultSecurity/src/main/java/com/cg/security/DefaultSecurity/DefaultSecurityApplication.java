@@ -1,0 +1,35 @@
+package com.cg.security.DefaultSecurity;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import jakarta.annotation.PostConstruct;
+
+@SpringBootApplication
+public class DefaultSecurityApplication {
+
+	@Autowired
+	private BookRepository bookRepository;
+	
+	public static void main(String[] args) {
+		SpringApplication.run(DefaultSecurityApplication.class, args);
+	}
+	
+	@PostConstruct
+	public void initBook() {
+		List<Book> books = Stream.of(
+				new Book(101,"AA",1000.25),
+				new Book(105,"EE",333.25),
+				new Book(104,"BB",222.25),
+				new Book(106,"RR",888.25))
+				.collect(Collectors.toList());
+		bookRepository.saveAll(books);
+				
+	}
+
+}

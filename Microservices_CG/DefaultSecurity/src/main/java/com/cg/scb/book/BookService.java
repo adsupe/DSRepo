@@ -1,0 +1,56 @@
+package com.cg.scb.book;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class BookService {
+	
+	@Autowired
+	public BookRepository repository;
+	
+	public List<Book> findAllBook(){
+		return repository.findAll();
+	}
+	
+	public Book createBook(Book book) {
+		return repository.save(book);
+	}
+	
+	public Book getBookById(int id) {
+		Book book = repository.findById(id).orElseThrow(()-> new BookNotFoundException("Book Not Found"));
+		return book;
+	}
+	
+	public Book udpateBookById(Book book) {
+		Book book1 = repository.findById(book.getId()).orElseThrow(()->new BookNotFoundException("Book Not Found"));
+		book1.setName(book.getName());
+		book1.setPrice(book.getPrice());
+		repository.save(book1);
+		
+		return book1;
+	}
+	
+	public void deleteById(int id) {
+		Book book1 = repository.findById(id).orElseThrow(()->new BookNotFoundException("Book Not Found"));
+		repository.deleteById(id);
+	}
+
+	public List<Book> findByBookName(String name){
+		return repository.findByName(name);
+	}
+	
+	public List<Book> findFirstTwoByBookName(String name){
+		return repository.findFirst2ByName(name);
+	}
+	
+	public List<Book> findTopTwoByBookName(String name){
+		return repository.findTop2ByName(name);
+	}
+	
+	public List<Book> findTopTwoByBookNameAndGreaterThan(String name,int price){
+		return repository.findTop2ByNameAndPriceGreaterThan(name,price);
+	}
+}

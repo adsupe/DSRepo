@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;DefaultSecurityApplicationTests.java&apos; to &apos;BookScbDemo/src/test/java/com.cg.scb.book&apos;&#x0D;&#x0A;- Original project: &apos;CustomerProductDemoOperation&apos;&#x0D;&#x0A;- Destination element: &apos;BookScbDemo/src/test/java/com.cg.scb.book&apos;&#x0D;&#x0A;- Original element: &apos;DefaultSecurityApplicationTests.java&apos;" description="Copy file" destination="=BookScbDemo/src\/test\/java=/test=/true=/=/optional=/true=/=/maven.pomderived=/true=/&lt;com.cg.scb.book" element1="src/test/java/com/cg/security/DefaultSecurity/DefaultSecurityApplicationTests.java" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1722595003493" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,25 @@
+package ultimate.java.progs;
+
+import java.time.LocalDate;
+import java.time.Month;
+
+public class SCB_Test {
+
+	public static void main(String[] args) {
+
+		LocalDate leapYear = LocalDate.of(2016, Month.FEBRUARY, 29);
+		
+		LocalDate lpNext = leapYear.withYear(2015);
+		System.out.println(lpNext); // 2015-02-28`
+		
+		
+		System.out.println(leapYear.plusYears(1));
+		
+		
+		
+		
+		
+		
+	}
+
+}

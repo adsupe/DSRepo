@@ -1,0 +1,70 @@
+package com.cg.security.DefaultSecurity;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/books")
+public class BookController {
+
+	@Autowired
+	public BookRepository bookRepository;
+	
+	@GetMapping
+	public List<Book> getAllBooks(){
+		return bookRepository.findAll();
+	}
+	
+	@PostMapping
+	public ResponseEntity<Book> createBook(@RequestBody Book book){
+		Book book1 = bookRepository.save(book);
+		return new ResponseEntity(book1,HttpStatus.CREATED);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Book> getBookById(@PathVariable Integer id){
+		Book book = bookRepository.findById(id).orElseThrow(()->new BookNotFoundException("Book Not Found"));
+		return new ResponseEntity(book,HttpStatus.OK);
+	}
+	
+	
+	@PutMapping()
+	public ResponseEntity<Book> updateBookById(@RequestBody Book book){
+		Book book1 = bookRepository.findById(book.getId()).orElseThrow(()->new BookNotFoundException("Book Not Found"));
+		book1.setName(book.getName());
+		book1.setPrice(book.getPrice());
+		bookRepository.save(book);
+		return new ResponseEntity(book1,HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<HttpStatus> deleteById(@PathVariable Integer id){
+		
+		bookRepository.deleteById(id);
+		return new ResponseEntity(HttpStatus.NO_CONTENT);
+	}
+	
+	@GetMapping("/name/{name}")
+	public ResponseEntity<List<Book>> findByBookName(@PathVariable String name){
+		List<Book> listByName =  bookRepository.findByName(name);
+		if(!listByName.isEmpty()) {
+			return new ResponseEntity(listByName, HttpStatus.FOUND);
+		} else {
+			throw new BookNotFoundByNameException("Book not found by name!");
+		}
+	}
+	
+	
+}
